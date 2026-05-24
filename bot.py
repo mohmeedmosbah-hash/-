@@ -1,16 +1,9 @@
-import requests
 import os
 
-token = os.environ["BOT_TOKEN"]
-chat = os.environ["CHAT_ID"]
+token = os.environ.get("BOT_TOKEN")
 
-response = requests.post(
-    f"https://api.telegram.org/bot{token}/sendMessage",
-    data={
-        "chat_id": chat,
-        "text": "✅ اختبار البوت من GitHub"
-    }
-)
+print("TOKEN LENGTH:", len(token) if token else "None")
 
-print(response.status_code)
-print(response.text)
+if token:
+    print("FIRST:", token[:10])
+    print("LAST:", token[-5:])
